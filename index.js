@@ -3,13 +3,16 @@ for (var i = 0; i < 7; i++) {
 
         var buttonInnerHtml = this.innerHTML;
         makeSound(buttonInnerHtml);
+        buttonAnimation(buttonInnerHtml)
 
     });
 }
 
 document.addEventListener("keypress", function (event) {
     makeSound(event.key)
+    buttonAnimation(event.key)
 });
+
 function makeSound(key) {
     switch (key) {
         case "w":
@@ -44,4 +47,13 @@ function makeSound(key) {
         default:
             break;
     }
+}
+
+function buttonAnimation(key)
+{
+    activator=document.querySelector("."+key)
+    activator.classList.add("pressed")
+    setTimeout(function(){
+activator.classList.remove("pressed")
+    },100);
 }
